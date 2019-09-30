@@ -1,6 +1,6 @@
 ## グーグルアナリティクスらかファイヤベースアナリティクスに切り替える。
 
-### 書き直す機能
+### 旧機能
 	GAManager.cs
 ```C#:GAManager.cs
 public static GoogleAnalytics GetInstance(Activity activity){
@@ -30,6 +30,7 @@ public static void SendScreen(Activity activity,string screenName){
 	 tracker.Send(new HitBuilders.EventBuilder().SetCategory(category).SetAction(action).SetLabel(label).Build());
 }
 ```
+### 書き直した機能
 	FirebaseManager.cs
 ```C#:FirebaseManager.cs
 public static FirebaseAnalytics GetInstance(Activity activity){
@@ -77,3 +78,11 @@ public static void OpenAutoTracking (){
 		_tracker.EnableAutoActivityTracking (true);
 }
 ```
+* AutoTracking機能については、ファイヤベースのドキュメントを読んでらか、アクティビティをトラッキングするのが自動的にすると分かりました。だから、下記の機能が要らなくるとおもいます。
+> CloseAutoTracking, OpenAutoTracking
+
+ 
+そういう風に、下記の機能も要らなくなると思います。
+> SendStartScreen , SendFinishScreen 
+
+* データについては、できるだけ同様のデータを出します。しかし、100％同様わけではないと思います。どのぐらいできるか、アプリをテストして、管理ページでテストデータが見られるようになってから、報告します。
