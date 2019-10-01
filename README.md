@@ -44,7 +44,6 @@ public static void SendScreen(Activity activity, string screenname){
 	bundle = new Bundle();
 	var instance = GetInstance(activity);
 	instance.SetCurrentScreen(activity, screenname, activity.Class.SimpleName);
-	instance.LogEvent(FirebaseAnalytics.Event.ViewItem, bundle);
 }
 
 public static void SendEvent(Activity activity, string category, string action, string label){
